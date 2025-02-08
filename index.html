@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thailand Liquor Tax calculation, Beer, Wine, Spirits</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+      <h1 class="text-2xl font-bold text-center mb-4">
+        Thailand Beer, Wine, Spirits Tax Calculator
+      </h1>
+      <form id="taxForm" class="space-y-4">
+        <label class="block" for="alcoholType">Select Alcohol Type:</label>
+        <select
+          id="alcoholType"
+          class="w-full p-2 border rounded"
+          onchange="updateTaxInfo()"
+        >
+          <option value="beer">Beer</option>
+          <option value="wine">Wine</option>
+          <option value="spirits">Distilled Spirits</option>
+        </select>
+
+        <div
+          id="taxInfo"
+          class="text-sm text-gray-600 bg-gray-50 p-2 rounded"
+        ></div>
+
+        <label class="block" for="wholesalePrice"
+          >Final Wholesale Price (Baht):</label
+        >
+        <input
+          type="number"
+          id="wholesalePrice"
+          required
+          class="w-full p-2 border rounded"
+          value="38"
+        />
+
+        <label class="block" for="containerSize"
+          >Container Size (Liters):</label
+        >
+        <input
+          type="number"
+          id="containerSize"
+          step="0.01"
+          required
+          class="w-full p-2 border rounded"
+          value="0.5"
+        />
+
+        <label class="block" for="alcoholContent">Alcohol Content (%):</label>
+        <input
+          type="number"
+          id="alcoholContent"
+          step="0.1"
+          required
+          class="w-full p-2 border rounded"
+          value="4.9"
+        />
+
+        <button
+          type="button"
+          onclick="calculateTax()"
+          class="w-full bg-blue-500 text-white p-2 rounded"
+        >
+          Calculate Tax
+        </button>
+      </form>
+      <div class="mt-4 text-center text-lg font-bold" id="result"></div>
+      <div class="mt-4 text-sm text-gray-600" id="breakdown"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
